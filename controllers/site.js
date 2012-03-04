@@ -12,7 +12,7 @@ exports.index = function(req,res,next){
 	var render = function(tags,topics,hot_topics,stars,tops,no_reply_topics,pages){
 		 var all_tags = tags.slice(0);
 
-		// 计算最热标签
+		// 計算最熱標籤
 		tags.sort(function(tag_a,tag_b){
 					if(tag_a.topic_count == tag_b.topic_count) return 0;
 					if(tag_a.topic_count > tag_b.topic_count) return -1;
@@ -20,7 +20,7 @@ exports.index = function(req,res,next){
 				});
 		var hot_tags = tags.slice(0,5); 
 
-		// 计算最新标签
+		// 計算最新標籤
 		tags.sort(function(tag_a,tag_b){
 					if(tag_a.create_at == tag_b.create_at) return 0;
 					if(tag_a.create_at > tag_b.create_at) return -1;

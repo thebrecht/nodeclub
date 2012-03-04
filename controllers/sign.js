@@ -35,24 +35,24 @@ exports.signup = function(req,res,next){
 		}
 
 		if(name.length < 5){
-			res.render('sign/signup', {error:'用户名至少需要5个字符。',name:name,email:email});
+			res.render('sign/signup', {error:'用戶名至少需要5個字符。',name:name,email:email});
 			return;
 		}
 
 		try{
-			check(name, '用户名只能使用0-9，a-z，A-Z。').isAlphanumeric();
+			check(name, '用戶名只能使用0-9，a-z，A-Z。').isAlphanumeric();
 		}catch(e){
 			res.render('sign/signup', {error:e.message,name:name,email:email});
 			return;
 		}
 
 		if(pass != re_pass){
-			res.render('sign/signup', {error:'两次密码输入不一致。',name:name,email:email});
+			res.render('sign/signup', {error:'兩次密碼輸入不一致。',name:name,email:email});
 			return;
 		}
 			
 		try{
-			check(email, '不正确的电子邮箱。').isEmail();
+			check(email, '不正確的電子郵箱。').isEmail();
 		}catch(e){
 			res.render('sign/signup', {error:e.message,name:name,email:email});
 			return;
@@ -61,7 +61,7 @@ exports.signup = function(req,res,next){
 		User.find({'$or':[{'loginname':loginname},{'email':email}]},function(err,users){
 			if(err) return next(err);
 			if(users.length > 0){
-				res.render('sign/signup', {error:'用户名或邮箱已被使用。',name:name,email:email});
+				res.render('sign/signup', {error:'用戶名或郵箱已被使用。',name:name,email:email});
 				return;
 			}
 			
@@ -81,7 +81,7 @@ exports.signup = function(req,res,next){
 				if(err) return next(err);
 				mail_ctrl.send_active_mail(email,md5(email+config.session_secret),name,email,function(err,success){
 					if(success){
-						res.render('sign/signup', {success:'欢迎加入 ' + config.name + '！我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来激活您的帐号。'});
+						res.render('sign/signup', {success:'歡迎加入 ' + config.name + '！我們已給您的註冊郵箱發送了一封郵件，請點擊裡面的鏈接來激活您的帳號。'});
 						return;
 					}
 				});
@@ -119,14 +119,14 @@ exports.login = function(req, res, next) {
 	User.findOne({ 'loginname': loginname }, function(err, user) {
 		if (err) return next(err);
 		if (!user) {
-			return res.render('sign/signin', { error:'这个用户不存在。' });
+			return res.render('sign/signin', { error:'這個用戶不存在。' });
 		}
 		pass = md5(pass);
 		if (pass !== user.pass) {
-			return res.render('sign/signin', { error:'密码错误。' });
+			return res.render('sign/signin', { error:'密碼錯誤。' });
 		}
 		if (!user.active) {
-			res.render('sign/signin', { error:'此帐号还没有被激活。' });
+			res.render('sign/signin', { error:'此帳號還沒有被激活。' });
 			return;
 		}
 		// store session cookie
@@ -149,16 +149,16 @@ exports.active_account = function(req,res,next) {
 
 	User.findOne({name:name},function(err,user){
 		if(!user || md5(email+config.session_secret) != key){
-			res.render('notify/notify',{error: '信息有误，帐号无法被激活。'});
+			res.render('notify/notify',{error: '信息有誤，帳號無法被激活。'});
 			return;
 		}
 		if(user.active){
-			res.render('notify/notify',{error: '帐号已经是激活状态。'});
+			res.render('notify/notify',{error: '帳號已經是激活狀態。'});
 			return;
 		}
 		user.active = true;
 		user.save(function(err){
-			res.render('notify/notify',{success: '帐号已被激活，请登录'});
+			res.render('notify/notify',{success: '帳號已被激活，請登錄'});
 		});	
 	});
 }
@@ -173,7 +173,7 @@ exports.search_pass = function(req,res,next){
 		email = email.toLowerCase();
 
 		try{
-			check(email, '不正确的电子邮箱。').isEmail();
+			check(email, '不正確的電子郵箱。').isEmail();
 		}catch(e){
 			res.render('sign/search_pass', {error:e.message,email:email});
 			return;
@@ -181,11 +181,11 @@ exports.search_pass = function(req,res,next){
 
 		User.findOne({email:email},function(err,user){
 			if(!user){
-				res.render('sign/search_pass', {error:'没有这个电子邮箱。',email:email});
+				res.render('sign/search_pass', {error:'沒有這個電子郵箱。',email:email});
 				return;
 			}
 			mail_ctrl.send_reset_pass_mail(email,md5(email+config.session_secret),user.name,function(err,success){
-				res.render('notify/notify',{success: '我们已给您填写的电子邮箱发送了一封邮件，请点击里面的链接来重置密码。'});
+				res.render('notify/notify',{success: '我們已給您填寫的電子郵箱發送了一封郵件，請點擊裡面的鏈接來重置密碼。'});
 			});
 		});
 	}	
@@ -198,13 +198,13 @@ exports.reset_pass = function(req,res,next){
 
 	User.findOne({name:name},function(err,user){
 		if(!user || md5(user.email+config.session_secret) != key){
-			res.render('notify/notify',{error: '信息有误，密码无法重置。'});
+			res.render('notify/notify',{error: '信息有誤，密碼無法重置。'});
 			return;
 		}
 		new_pass = random_password();
 		user.pass = md5(new_pass);
 		user.save(function(err){
-			res.render('notify/notify',{success: '你的密码已被重置为：' + new_pass + '，请立即用此密码登录后在设置页面更改密码。'});
+			res.render('notify/notify',{success: '你的密碼已被重置為：' + new_pass + '，請立即用此密碼登錄後在設置頁面更改密碼。'});
 		});	
 	});
 

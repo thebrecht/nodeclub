@@ -15,10 +15,10 @@ exports.format_date = function(date,friendly) {
 				return Math.floor(mseconds/time_std[0]).toString() + ' 秒前';
 			}
 			if(mseconds > time_std[1] && mseconds < time_std[2]) {
-				return Math.floor(mseconds/time_std[1]).toString() + ' 分钟前';
+				return Math.floor(mseconds/time_std[1]).toString() + ' 分鐘前';
 			}
 			if(mseconds > time_std[2]) {
-				return Math.floor(mseconds/time_std[2]).toString() + ' 小时前';
+				return Math.floor(mseconds/time_std[2]).toString() + ' 小時前';
 			}
 		}
 	}

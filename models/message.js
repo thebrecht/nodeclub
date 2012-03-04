@@ -4,9 +4,9 @@ var mongoose = require('mongoose'),
 	
 /*
  * type:
- * reply: xx 回复了你的话题
- * reply2: xx 在话题中回复了你
- * follow: xx 关注了你
+ * reply: xx 回復了你的話題
+ * reply2: xx 在話題中回復了你
+ * follow: xx 關注了你
  * at: xx ＠了你
  */
  

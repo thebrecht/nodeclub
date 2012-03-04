@@ -31,7 +31,7 @@ var Util = require('../libs/util');
 exports.index = function(req, res, next) {
 	var topic_id = req.params.tid;
 	if (topic_id.length !== 24) {
-		return res.render('notify/notify', { error: '此话题不存在或已被删除。' });
+		return res.render('notify/notify', { error: '此話題不存在或已被刪除。' });
 	}
 	var events = [ 'topic', 'other_topics', 'no_reply_topics', '@user' ];
 	var ep = EventProxy.create(events, function(topic, other_topics, no_reply_topics) {
@@ -110,7 +110,7 @@ exports.index = function(req, res, next) {
 
 exports.create = function(req,res,next){
 	if(!req.session.user){
-		res.render('notify/notify',{error:'未登入用户不能发布话题。'});
+		res.render('notify/notify',{error:'未登入用戶不能發佈話題。'});
 		return;
 	}
 
@@ -142,7 +142,7 @@ exports.create = function(req,res,next){
 						}
 					}	
 				}
-				res.render('topic/edit',{tags:tags, edit_error:'标题不能是空的。', content:content});
+				res.render('topic/edit',{tags:tags, edit_error:'標題不能是空的。', content:content});
 				return;
 			});
 		}else if(title.length<10 || title.length>100){
@@ -155,7 +155,7 @@ exports.create = function(req,res,next){
 						}
 					}	
 				}
-				res.render('topic/edit',{tags:tags, edit_error:'标题字数太多或太少', content:content});
+				res.render('topic/edit',{tags:tags, edit_error:'標題字數太多或太少', content:content});
 				return;
 			});
 		}else{
@@ -172,7 +172,7 @@ exports.create = function(req,res,next){
 				}
 
 				proxy.assign('tags_saved','score_saved',render)
-				//话题可以没有标签
+				//話題可以沒有標籤
 				if(topic_tags.length == 0){
 					proxy.trigger('tags_saved');
 				}
@@ -205,7 +205,7 @@ exports.create = function(req,res,next){
 					proxy.trigger('score_saved');
 				});
 
-				//发送at消息
+				//發送at消息
 				at_ctrl.send_at_message(content,topic._id,req.session.user._id);
 			});
 		}
@@ -222,12 +222,12 @@ exports.edit = function(req,res,next){
 	var method = req.method.toLowerCase();
 	if(method == 'get'){
 		if(topic_id.length != 24){
-			res.render('notify/notify',{error: '此话题不存在或已被删除。'});
+			res.render('notify/notify',{error: '此話題不存在或已被刪除。'});
 			return;	
 		}
 		get_topic_by_id(topic_id,function(err,topic,tags,author){
 			if(!topic){
-				res.render('notify/notify',{error: '此话题不存在或已被删除。'});
+				res.render('notify/notify',{error: '此話題不存在或已被刪除。'});
 				return;	
 			}
 			if(topic.author_id == req.session.user._id || req.session.user.is_admin){
@@ -244,19 +244,19 @@ exports.edit = function(req,res,next){
 					res.render('topic/edit',{action:'edit',topic_id:topic._id,title:topic.title,content:topic.content,tags:all_tags});
 				});
 			}else{
-				res.render('notify/notify',{error:'对不起，你不能编辑此话题。'});
+				res.render('notify/notify',{error:'對不起，你不能編輯此話題。'});
 				return;
 			}
 		});
 	}
 	if(method == 'post'){
 		if(topic_id.length != 24){
-			res.render('notify/notify',{error: '此话题不存在或已被删除。'});
+			res.render('notify/notify',{error: '此話題不存在或已被刪除。'});
 			return;	
 		}
 		get_topic_by_id(topic_id,function(err,topic,tags,author){
 			if(!topic){
-				res.render('notify/notify',{error: '此话题不存在或已被删除。'});
+				res.render('notify/notify',{error: '此話題不存在或已被刪除。'});
 				return;	
 			}
 			if(topic.author_id == req.session.user._id || req.session.user.is_admin){
@@ -278,12 +278,12 @@ exports.edit = function(req,res,next){
 								}
 							}	
 						}
-						res.render('topic/edit',{action:'edit',edit_error:'标题不能是空的。',topic_id:topic._id, content:content,tags:all_tags});
+						res.render('topic/edit',{action:'edit',edit_error:'標題不能是空的。',topic_id:topic._id, content:content,tags:all_tags});
 						return;
 					});
 				}else{
-					//保存话题
-					//删除topic_tag，标签topic_count减1
+					//保存話題
+					//刪除topic_tag，標籤topic_count減1
 					//保存新topic_tag	
 					topic.title = title;
 					topic.content = content;
@@ -297,7 +297,7 @@ exports.edit = function(req,res,next){
 						}
 						proxy.assign('tags_removed_done','tags_saved_done',render);
 
-						// 删除topic_tag
+						// 刪除topic_tag
 						var tags_removed_done = function(){
 							proxy.trigger('tags_removed_done');
 						};
@@ -327,7 +327,7 @@ exports.edit = function(req,res,next){
 						var tags_saved_done = function(){
 							proxy.trigger('tags_saved_done');
 						}	
-						//话题可以没有标签
+						//話題可以沒有標籤
 						if(topic_tags.length == 0){
 							proxy.trigger('tags_saved_done');
 						}else{
@@ -351,12 +351,12 @@ exports.edit = function(req,res,next){
 							}
 						}
 
-						//发送at消息
+						//發送at消息
 						at_ctrl.send_at_message(content,topic._id,req.session.user._id);
 					});
 				}	
 			}else{
-				res.render('notify/notify',{error:'对不起，你不能编辑此话题。'});
+				res.render('notify/notify',{error:'對不起，你不能編輯此話題。'});
 				return;
 			}
 		});
@@ -364,27 +364,27 @@ exports.edit = function(req,res,next){
 };
 
 exports.delete = function(req,res,next){
-	//删除话题, 话题作者topic_count减1
-	//删除回复，回复作者reply_count减1
-	//删除topic_tag，标签topic_count减1
-	//删除topic_collect，用户collect_topic_count减1
+	//刪除話題, 話題作者topic_count減1
+	//刪除回復，回復作者reply_count減1
+	//刪除topic_tag，標籤topic_count減1
+	//刪除topic_collect，用戶collect_topic_count減1
 	if(!req.session.user || !req.session.user.is_admin){
 		res.redirect('home');
 		return;
 	}
 	var topic_id = req.params.tid;
 	if(topic_id.length != 24){
-		res.render('notify/notify',{error: '此话题不存在或已被删除。'});
+		res.render('notify/notify',{error: '此話題不存在或已被刪除。'});
 		return;	
 	}
 	get_topic_by_id(topic_id,function(err,topic,tags,author){
 		if(!topic){
-			res.render('notify/notify',{error: '此话题不存在或已被删除。'});
+			res.render('notify/notify',{error: '此話題不存在或已被刪除。'});
 			return;	
 		}
 		var proxy = new EventProxy();
 		var render = function(){
-			res.render('notify/notify',{success: '话题已被删除。'});
+			res.render('notify/notify',{success: '話題已被刪除。'});
 			return;
 		}
 		proxy.assign('topic_removed',render);
@@ -523,7 +523,7 @@ function get_full_topic(id,cb){
 	Topic.findOne({_id:id},function(err,topic){
 		if(err) return cb(err);
 		if(!topic){
-			return cb(null, '此话题不存在或已被删除。');	
+			return cb(null, '此話題不存在或已被刪除。');	
 		}
 		proxy.trigger('topic',topic);
 		
@@ -542,7 +542,7 @@ function get_full_topic(id,cb){
 		user_ctrl.get_user_by_id(topic.author_id,function(err,author){
 			if(err) return cb(err);
 			if(!author){
-				return cb(null, '话题的作者丢了。');	
+				return cb(null, '話題的作者丟了。');	
 			}
 			proxy.trigger('author',author);
 		});

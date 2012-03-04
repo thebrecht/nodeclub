@@ -15,9 +15,9 @@
 	<span class='col_fade'>
 		<% if(topic.tags.length > 0){ %> • <% } %>
 		<a class='dark' href='/user/<%= topic.author.name %>'><%= topic.author.name %></a> 
-		• <%= topic.visit_count %> 次点击
+		• <%= topic.visit_count %> 次點擊
 		<% if(topic.reply){  %>
-		• <%= topic.reply.friendly_create_at %>由<a class='dark' href='/user/<%= topic.reply.author.name %>'> <%= topic.reply.author.name %> </a>回复
+		• <%= topic.reply.friendly_create_at %>由<a class='dark' href='/user/<%= topic.reply.author.name %>'> <%= topic.reply.author.name %> </a>回復
 		<% }else{ %>
 		• <%= topic.friendly_create_at %>
 		<% } %>

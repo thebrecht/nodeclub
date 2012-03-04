@@ -18,12 +18,12 @@ function send_mail(data,cb){
 function send_active_mail(who,token,name,email,cb){
 	var sender =  config.mail_sender;
 	var to = who; 
-	var subject = config.name + '社区帐号激活';
+	var subject = config.name + '社區帳號激活';
 	var html = '<p>您好：<p/>' +
-			   '<p>我们收到您在' + config.name + '社区的注册信息，请点击下面的链接来激活帐户：</p>' +
-			   '<a href="' + config.host + '/active_account?key=' + token + '&name=' + name + '&email=' + email + '">激活链接</a>' +
-			   '<p>若您没有在' + config.name + '社区填写过注册信息，说明有人滥用了您的电子邮箱，请删除此邮件，我们对给您造成的打扰感到抱歉。</p>' +
-			   '<p>' +config.name +'社区 谨上。</p>'
+			   '<p>我們收到您在' + config.name + '社區的註冊信息，請點擊下面的鏈接來激活帳戶：</p>' +
+			   '<a href="' + config.host + '/active_account?key=' + token + '&name=' + name + '&email=' + email + '">激活鏈接</a>' +
+			   '<p>若您沒有在' + config.name + '社區填寫過註冊信息，說明有人濫用了您的電子郵箱，請刪除此郵件，我們對給您造成的打擾感到抱歉。</p>' +
+			   '<p>' +config.name +'社區 謹上。</p>'
 
 	var data = {
 		sender: sender,
@@ -39,12 +39,12 @@ function send_active_mail(who,token,name,email,cb){
 function send_reset_pass_mail(who,token,name,cb){
 	var sender = config.mail_sender;
 	var to = who; 
-	var subject = config.name + '社区密码重置';
+	var subject = config.name + '社區密碼重置';
 	var html = '<p>您好：<p/>' +
-			   '<p>我们收到您在' + config.name + '社区重置密码的请求，请单击下面的链接来重置密码：</p>' +
-			   '<a href="' + config.host + '/reset_pass?key=' + token + '&name=' + name + '">重置密码链接</a>' +
-			   '<p>若您没有在' + config.name + '社区填写过注册信息，说明有人滥用了您的电子邮箱，请删除此邮件，我们对给您造成的打扰感到抱歉。</p>' +
-			   '<p>' + config.name +'社区 谨上。</p>'
+			   '<p>我們收到您在' + config.name + '社區重置密碼的請求，請單擊下面的鏈接來重置密碼：</p>' +
+			   '<a href="' + config.host + '/reset_pass?key=' + token + '&name=' + name + '">重置密碼鏈接</a>' +
+			   '<p>若您沒有在' + config.name + '社區填寫過註冊信息，說明有人濫用了您的電子郵箱，請刪除此郵件，我們對給您造成的打擾感到抱歉。</p>' +
+			   '<p>' + config.name +'社區 謹上。</p>'
 
 	var data = {
 		sender: sender,
@@ -64,10 +64,10 @@ function send_reply_mail(who,msg){
 	var html = '<p>您好：<p/>' +
 			   '<p>' +
 			   '<a href="' + config.host + ':' + config.port + '/user/' + msg.author.name + '">' + msg.author.name + '</a>' +
-			   ' 在话题 ' + '<a href="' + config.host + ':' + config.port + '/topic/' + msg.topic._id + '">' + msg.topic.title + '</a>' +
-			   ' 中回复了你。</p>' +
-			   '<p>若您没有在' + config.name + '社区填写过注册信息，说明有人滥用了您的电子邮箱，请删除此邮件，我们对给您造成的打扰感到抱歉。</p>' +
-			   '<p>' +config.name +'社区 谨上。</p>'
+			   ' 在話題 ' + '<a href="' + config.host + ':' + config.port + '/topic/' + msg.topic._id + '">' + msg.topic.title + '</a>' +
+			   ' 中回復了你。</p>' +
+			   '<p>若您沒有在' + config.name + '社區填寫過註冊信息，說明有人濫用了您的電子郵箱，請刪除此郵件，我們對給您造成的打擾感到抱歉。</p>' +
+			   '<p>' +config.name +'社區 謹上。</p>'
 
 	var data = {
 		sender: sender,
@@ -86,10 +86,10 @@ function send_at_mail(who,msg){
 	var html = '<p>您好：<p/>' +
 			   '<p>' +
 			   '<a href="' + config.host + ':' + config.port + '/user/' + msg.author.name + '">' + msg.author.name + '</a>' +
-			   ' 在话题 ' + '<a href="' + config.host + ':' + config.port + '/topic/' + msg.topic._id + '">' + msg.topic.title + '</a>' +
+			   ' 在話題 ' + '<a href="' + config.host + ':' + config.port + '/topic/' + msg.topic._id + '">' + msg.topic.title + '</a>' +
 			   ' 中@了你。</p>' +
-			   '<p>若您没有在' + config.name + '社区填写过注册信息，说明有人滥用了您的电子邮箱，请删除此邮件，我们对给您造成的打扰感到抱歉。</p>' +
-			   '<p>' +config.name +'社区 谨上。</p>'
+			   '<p>若您沒有在' + config.name + '社區填寫過註冊信息，說明有人濫用了您的電子郵箱，請刪除此郵件，我們對給您造成的打擾感到抱歉。</p>' +
+			   '<p>' +config.name +'社區 謹上。</p>'
 
 	var data = {
 		sender: sender,

@@ -4,18 +4,18 @@
 
 exports.config = {
 	name: 'Node Club',
-	description: 'Node Club 是用Node.js开发的社区软件',
+	description: 'Node Club 是用Node.js開發的社區軟件',
 	version: '0.2.0',
 
 	// site settings
 	site_headers: [
-		'<meta name="author" content="慕远@TaoBao" />',
+		'<meta name="author" content="慕遠@TaoBao" />',
 	],
-	host: 'http://127.0.0.1', // host 结尾不要添加'/'
+	host: 'http://127.0.0.1', // host 結尾不要添加'/'
 	site_logo: '', // default is `name`
 	site_navs: [
 		// [ path, title, [target=''] ]
-		[ '/about', '关于' ],
+		[ '/about', '關於' ],
 	],
 
 	db: 'mongodb://127.0.0.1/node_club',
@@ -23,7 +23,7 @@ exports.config = {
 	auth_cookie_name: 'node_club',
 	port: 80,
 
-	// 话题列表显示的话题数量
+	// 話題列表顯示的話題數量
 	list_topic_count: 20,
 
 	// mail SMTP
@@ -37,7 +37,7 @@ exports.config = {
 	//weibo app key
 	weibo_key: 10000000,
 
-	// admin 可删除话题，编辑标签，设某人为达人
+	// admin 可刪除話題，編輯標籤，設某人為達人
 	admins: { admin: true },
 
 	// [ [ plugin_name, options ], ... ]

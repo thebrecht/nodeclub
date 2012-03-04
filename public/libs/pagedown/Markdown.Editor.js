@@ -1,4 +1,4 @@
-﻿// needs Markdown.Converter.js at the moment
+// needs Markdown.Converter.js at the moment
 
 (function () {
 
@@ -27,8 +27,8 @@
 
     // The text that appears on the upper part of the dialog box when
     // entering links.
-    var linkDialogText = "<p><b>插入超链接</b></p><p>http://example.com/ \"optional title\"</p>";
-    var imageDialogText = "<p><b>插入图片</b></p><p>http://example.com/images/diagram.jpg \"optional title\"</p>";
+    var linkDialogText = "<p><b>插入超鏈接</b></p><p>http://example.com/ \"optional title\"</p>";
+    var imageDialogText = "<p><b>插入圖片</b></p><p>http://example.com/images/diagram.jpg \"optional title\"</p>";
 
     // The default text that appears in the dialog input box when entering
     // links.
@@ -1102,7 +1102,7 @@
             	box.appendChild(spacer);
             
             	var upload_img_btn = doc.createElement("Button");
-            	upload_img_btn.innerHTML = "浏览";
+            	upload_img_btn.innerHTML = "瀏覽";
             	upload_img_btn.className = "btn";
             	style = upload_img_btn.style;
             	style.display = "inline";
@@ -1115,7 +1115,7 @@
             		action : "/upload/image",
             		onSubmit: function(file,ext) {
             			if (! (ext && /^(jpg|png|jpeg|gif)$/i.test(ext))){
-            				alert('只能上传 jpg|png|jpeg|gif 格式的图片。');
+            				alert('只能上傳 jpg|png|jpeg|gif 格式的圖片。');
             				return false;
             			};
             		},
@@ -1124,7 +1124,7 @@
             			if(response.status == "success"){
             				input.value = response.url;
             			}else{
-            				alert("上传失败，请重试。");
+            				alert("上傳失敗，請重試。");
             			}
             		}
             	});
@@ -1134,7 +1134,7 @@
             var okButton = doc.createElement("input");
             okButton.type = "button";
             okButton.onclick = function () { return close(false); };
-            okButton.value = "确定";
+            okButton.value = "確定";
             okButton.className = "btn success";
             style = okButton.style;
             style.margin = "15px";
@@ -1443,28 +1443,28 @@
                 xPosition += 25;
             }
 
-            buttons.bold = makeButton("wmd-bold-button", "粗体 <strong> Ctrl+B", "0px", bindCommand("doBold"));
-            buttons.italic = makeButton("wmd-italic-button", "斜体 <em> Ctrl+I", "-20px", bindCommand("doItalic"));
+            buttons.bold = makeButton("wmd-bold-button", "粗體 <strong> Ctrl+B", "0px", bindCommand("doBold"));
+            buttons.italic = makeButton("wmd-italic-button", "斜體 <em> Ctrl+I", "-20px", bindCommand("doItalic"));
             makeSpacer(1);
-            buttons.link = makeButton("wmd-link-button", "超链接 <a> Ctrl+L", "-40px", bindCommand(function (chunk, postProcessing) {
+            buttons.link = makeButton("wmd-link-button", "超鏈接 <a> Ctrl+L", "-40px", bindCommand(function (chunk, postProcessing) {
                 return this.doLinkOrImage(chunk, postProcessing, false);
             }));
-            buttons.quote = makeButton("wmd-quote-button", "块引用 <blockquote> Ctrl+Q", "-60px", bindCommand("doBlockquote"));
-            buttons.code = makeButton("wmd-code-button", "代码 <pre><code> Ctrl+K", "-80px", bindCommand("doCode"));
-            buttons.image = makeButton("wmd-image-button", "图片 <img> Ctrl+G", "-100px", bindCommand(function (chunk, postProcessing) {
+            buttons.quote = makeButton("wmd-quote-button", "塊引用 <blockquote> Ctrl+Q", "-60px", bindCommand("doBlockquote"));
+            buttons.code = makeButton("wmd-code-button", "代碼 <pre><code> Ctrl+K", "-80px", bindCommand("doCode"));
+            buttons.image = makeButton("wmd-image-button", "圖片 <img> Ctrl+G", "-100px", bindCommand(function (chunk, postProcessing) {
                 return this.doLinkOrImage(chunk, postProcessing, true);
             }));
             makeSpacer(2);
             buttons.olist = makeButton("wmd-olist-button", "有序列表 <ol> Ctrl+O", "-120px", bindCommand(function (chunk, postProcessing) {
                 this.doList(chunk, postProcessing, true);
             }));
-            buttons.ulist = makeButton("wmd-ulist-button", "无序列表 <ul> Ctrl+U", "-140px", bindCommand(function (chunk, postProcessing) {
+            buttons.ulist = makeButton("wmd-ulist-button", "無序列表 <ul> Ctrl+U", "-140px", bindCommand(function (chunk, postProcessing) {
                 this.doList(chunk, postProcessing, false);
             }));
-            buttons.heading = makeButton("wmd-heading-button", "标题 <h1>/<h2> Ctrl+H", "-160px", bindCommand("doHeading"));
-            buttons.hr = makeButton("wmd-hr-button", "水平线 <hr> Ctrl+R", "-180px", bindCommand("doHorizontalRule"));
+            buttons.heading = makeButton("wmd-heading-button", "標題 <h1>/<h2> Ctrl+H", "-160px", bindCommand("doHeading"));
+            buttons.hr = makeButton("wmd-hr-button", "水平線 <hr> Ctrl+R", "-180px", bindCommand("doHorizontalRule"));
             makeSpacer(3);
-            buttons.undo = makeButton("wmd-undo-button", "撤销 - Ctrl+Z", "-200px", null);
+            buttons.undo = makeButton("wmd-undo-button", "撤銷 - Ctrl+Z", "-200px", null);
             buttons.undo.execute = function (manager) { if (manager) manager.undo(); };
 
             var redoTitle = /win/.test(nav.platform.toLowerCase()) ?

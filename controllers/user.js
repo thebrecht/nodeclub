@@ -23,7 +23,7 @@ exports.index = function(req,res,next){
 	var user_name = req.params.name;
 	get_user_by_name(user_name,function(err,user){
 		if(!user){
-			res.render('notify/notify', {error:'这个用户不存在。'});
+			res.render('notify/notify', {error:'這個用戶不存在。'});
 			return;
 		}
 		
@@ -116,7 +116,7 @@ exports.setting = function(req, res, next) {
 		if (url !== '') {
 			try{
 				if(url.indexOf('http://') < 0) url = 'http://' + url;
-				check(url, '不正确的个人网站。').isUrl();
+				check(url, '不正確的個人網站。').isUrl();
 			}catch(e){
 				res.render('user/setting', {error:e.message,name:name,email:email,url:url,location:location,
 								signature:signature,profile:profile,weibo:weibo,
@@ -128,7 +128,7 @@ exports.setting = function(req, res, next) {
 		if(weibo != ''){
 			try{
 				if(weibo.indexOf('http://') < 0) weibo = 'http://' + weibo;
-				check(weibo, '不正确的微博地址。').isUrl();
+				check(weibo, '不正確的微博地址。').isUrl();
 			}catch(e){
 				res.render('user/setting', {error:e.message,name:name,email:email,url:url,location:location,
 								signature:signature,profile:profile,weibo:weibo,
@@ -166,7 +166,7 @@ exports.setting = function(req, res, next) {
 			old_pass = md5sum.digest('hex');
 
 			if(old_pass != user.pass){
-				res.render('user/setting', {error:'当前密码不正确。',name:user.name,email:user.email,url:user.url,location:user.location,
+				res.render('user/setting', {error:'當前密碼不正確。',name:user.name,email:user.email,url:user.url,location:user.location,
 								signature:user.signature,profile:user.profile,weibo:user.weibo,
 								receive_at_mail: user.receive_at_mail,
 								receive_reply_mail: user.receive_reply_mail});
@@ -180,7 +180,7 @@ exports.setting = function(req, res, next) {
 			user.pass = new_pass;
 			user.save(function(err){
 				if(err) return next(err);
-				res.render('user/setting', {success:'密码已被修改。',name:user.name,email:user.email,url:user.url,location:user.location,
+				res.render('user/setting', {success:'密碼已被修改。',name:user.name,email:user.email,url:user.url,location:user.location,
 								signature:user.signature,profile:user.profile,weibo:user.weibo,
 								receive_at_mail: user.receive_at_mail,
 								receive_reply_mail: user.receive_reply_mail});
@@ -391,7 +391,7 @@ exports.list_topics = function(req,res,next){
 
 	get_user_by_name(user_name,function(err,user){
 		if(!user){
-			res.render('notify/notify', {error:'这个用户不存在。'});
+			res.render('notify/notify', {error:'這個用戶不存在。'});
 			return;
 		}
 		
@@ -434,7 +434,7 @@ exports.list_replies = function(req,res,next){
 
 	get_user_by_name(user_name,function(err,user){
 		if(!user){
-			res.render('notify/notify', {error:'这个用户不存在。'});
+			res.render('notify/notify', {error:'這個用戶不存在。'});
 			return;
 		}
 		
