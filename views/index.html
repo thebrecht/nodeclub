@@ -3,9 +3,9 @@
 <div id='content'>
 	<div class='panel'>
 		<div class='moon'>
-			<img src='/images/tag_icon&16.png' title='標籤'/>
 			<% if (locals.current_user && current_user.is_admin) { %>
-			<span class='fr'><a href='/tags/edit'><img src='/images/wrench_icon&16.png' title='編輯標籤' /></a></span>
+			<img src='<%- config.site_static_host %>/images/tag_icon&16.png' title='標籤'/>
+			<span class='fr'><a href='/tags/edit'><img src='<%- config.site_static_host %>/images/wrench_icon&16.png' title='編輯標籤' /></a></span>
 			<% } %>
 		</div>
 		<div class='moon_tags'>
@@ -16,9 +16,9 @@
 			<% } %>
 		</div>
 		<div class='header'>
-			<img src='/images/spechbubble_2_icon&16.png' title='話題'/>
+			<img src='<%- config.site_static_host %>/images/spechbubble_2_icon&16.png' title='話題'/>
 			<% if (locals.current_user) { %>
-			<a href='/topic/create' class='fr'><button class='btn' id='create_topic_btn'>發佈話題</button></a>
+			<a href='/topic/create' class='fr'><button class='btn btn-success fr' id='create_topic_btn'>發佈話題</button></a>
 			<% } %>
 		</div>
 		<% if (locals.topics && topics.length > 0) { %>

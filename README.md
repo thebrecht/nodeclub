@@ -24,7 +24,6 @@ node app.js
 小量修改了兩個依賴模塊：node-markdown，express
  
 * node-markdown/lib/markdown.js  
-
 allowedTags 添加：
 
 ```   
@@ -45,19 +44,24 @@ table: 'class'
 if (req.body && req.body.user_action === 'upload_image') return next();
 ```
 
+## 關於pull request
+
+從現在開始，所有提交都要嚴格遵循[代碼規範](https://github.com/windyrobin/iFrame/blob/master/style.md)。
+
 ## Authors
 Below is the output from git-summary.
 
 ```
-project: nodeclub
-commits: 24
-files  : 238
-authors: 
-   9  muyuan                  37.5%
-   8  fengmk2                 33.3%
-   3  dead-horse              12.5%
-   1  LeToNode                4.2%
-   1  roymax                  4.2%
-   1  thebrecht               4.2%
-   1  張洋                     4.2%
+ project: nodeclub
+ commits: 45
+ files  : 242
+ authors: 
+    22  fengmk2                 48.9%
+     9  muyuan                  20.0%
+     7  dead-horse              15.6%
+     3  Kenny Zhao              6.7%
+     1  LeToNode                2.2%
+     1  roymax                  2.2%
+     1  thebrecht               2.2%
+     1  張洋                  2.2%
 ```

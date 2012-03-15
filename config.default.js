@@ -9,7 +9,7 @@ exports.config = {
 
 	// site settings
 	site_headers: [
-		'<meta name="author" content="慕遠@TaoBao" />',
+		'<meta name="author" content="EDP@TAOBAO" />',
 	],
 	host: 'http://127.0.0.1', // host 結尾不要添加'/'
 	site_logo: '', // default is `name`
@@ -17,6 +17,7 @@ exports.config = {
 		// [ path, title, [target=''] ]
 		[ '/about', '關於' ],
 	],
+	site_static_host: '', // 靜態文件存儲域名
 
 	db: 'mongodb://127.0.0.1/node_club',
 	session_secret: 'node_club',

@@ -16,6 +16,26 @@
     </div>
     <% } %>
   </div>
+
+  <% if (locals.tops) { %>
+  <div class='sep10'></div>
+  <div class='panel'>
+    <div class='header'>
+      <span class='col_fade'>積分榜</span>
+    </div>
+    <div class='inner'>
+      <% if (tops.length > 0) { %>
+      <ol>
+      <%- partial('user/top', { collection: tops, as: 'user' }) %>
+      </ol>
+      <a class='dark' href='/users/top100'>TOP 100 &gt;&gt;</a>
+      <% } else { %>
+      <p>無</p>
+      <% } %>
+    </div>
+  </div>
+  <% } %>
+   
   <% if (locals.hot_tags) { %>
   <div class='sep10'></div>
   <div class='panel'>
@@ -68,24 +88,6 @@
   </div>
   <% } %>
 
-  <% if (locals.tops) { %>
-  <div class='sep10'></div>
-  <div class='panel'>
-    <div class='header'>
-      <span class='col_fade'>積分榜</span>
-    </div>
-    <div class='inner'>
-      <% if (tops.length > 0) { %>
-      <ol>
-      <%- partial('user/top', { collection: tops, as: 'user' }) %>
-      </ol>
-      <a class='dark' href='/users/top100'>Top100»</a>
-      <% } else { %>
-      <p>無</p>
-      <% } %>
-    </div>
-  </div>
-  <% } %>
 
   <% if (locals.stars) { %>
   <div class='sep10'></div>
@@ -113,21 +115,23 @@
     </div>
     <div class='inner'>
       <ul class='unstyled'>
-        <li><a href='http://nodejs.org/' target='_blank'>Nodejs官方網站</a></li>
-        <li><a href='http://club.cnodejs.org/' target='_blank'>CNode中文社區</a></li>
+        <li><a href='http://nodejs.org/' target='_blank'>Node 官方網站</a></li>
         <li><a href='http://party.cnodejs.net/' target='_blank'>Node Party</a></li>
         <li><a href='http://nodebeginner.org/index-zh-cn.html' target='_blank'>Node 入門</a></li>
-        <li><a href='http://cnodejs.org/cman/' target='_blank'>Node 中文文檔</a></li>
+        <li><a href='http://docs.cnodejs.net/cman/' target='_blank'>Node 中文文檔</a></li>
       </ul>
     </div>
   </div>
   <div class='sep10'></div>
   <div class='panel'>
     <div class='header'>  
-      <span class='col_fade'>友情社區</span>
+      <span class='col_fade'>友情社區 | 贊助商</span>
     </div>
     <div class='inner'>
-      <a href='http://ruby-china.org/' target='_blank'><img src='/images/ruby_china_logo.png' /></a>
+      <a href='http://www.upyun.com/?utm_source=nodejs&utm_medium=link&utm_campaign=upyun&md=nodejs' target='_blank'><img src='<%- config.site_static_host %>/images/upyun_logo.png' /></a>
+    </div>
+    <div class='inner'>
+      <a href='http://ruby-china.org/?utm_source=nodejs&utm_medium=link&utm_campaign=upyun&md=nodejs' target='_blank'><img src='<%- config.site_static_host %>/images/ruby_china_logo.png' /></a>
     </div>
   </div>
 </div>

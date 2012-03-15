@@ -65,3 +65,4 @@ routes(app);
 app.listen(config.port);
 console.log("NodeClub listening on port %d in %s mode", app.address().port, app.settings.env);
 console.log("God bless love....");
+console.log("You can debug your app with http://localhost:"+app.address().port);
