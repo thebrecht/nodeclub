@@ -5,7 +5,7 @@
 exports.config = {
 	name: 'Node Club',
 	description: 'Node Club 是用Node.js開發的社區軟件',
-	version: '0.2.0',
+	version: '0.2.2',
 
 	// site settings
 	site_headers: [
@@ -26,6 +26,17 @@ exports.config = {
 
 	// 話題列表顯示的話題數量
 	list_topic_count: 20,
+
+	// RSS
+	rss: {
+		title: 'CNode：Node.js专业中文社区',
+		link: 'http://cnodejs.org',
+		language: 'zh-cn',
+		description: 'CNode：Node.js专业中文社区',
+
+		//最多获取的RSS Item数量
+		max_rss_items: 50
+	},
 
 	// mail SMTP
 	mail_port: 25,

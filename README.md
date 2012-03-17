@@ -9,7 +9,7 @@ Node Club 是用 **Node.js** 和 **MongoDb** 開發的新型社區軟件，界�
 
 ## 安裝部署
 
-```
+```bash
 // install node npm mongodb  
 // run mongod
 cd nodeclub
@@ -33,14 +33,14 @@ table|thead|tbody|tr|td|th|caption  //支持表格
    
 allowedAttributes 添加：
 
-```   
+```
 embed:'src|quality|width|height|align|allowScriptAccess|allowFullScreen|mode|type'
 table: 'class'
 ```
 
 * express/node_modules/connect/lib/middleware/csrf.js 添加：
 
-```
+```javascript
 if (req.body && req.body.user_action === 'upload_image') return next();
 ```
 
@@ -49,19 +49,21 @@ if (req.body && req.body.user_action === 'upload_image') return next();
 從現在開始，所有提交都要嚴格遵循[代碼規範](https://github.com/windyrobin/iFrame/blob/master/style.md)。
 
 ## Authors
-Below is the output from git-summary.
+
+Below is the output from `git-summary`.
 
 ```
  project: nodeclub
- commits: 45
- files  : 242
+ commits: 53
+ files  : 244
  authors: 
-    22  fengmk2                 48.9%
-     9  muyuan                  20.0%
-     7  dead-horse              15.6%
-     3  Kenny Zhao              6.7%
-     1  LeToNode                2.2%
-     1  roymax                  2.2%
-     1  thebrecht               2.2%
-     1  張洋                  2.2%
+    25  fengmk2                 47.2%
+     9  muyuan                  17.0%
+     8  dead-horse              15.1%
+     4  ericzhang               7.5%
+     3  Kenny Zhao              5.7%
+     1  LeToNode                1.9%
+     1  roymax                  1.9%
+     1  thebrecht               1.9%
+     1  张洋                  1.9%
 ```
